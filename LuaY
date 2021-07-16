@@ -68,12 +68,12 @@
 --   mostly due to new scoping behaviour of local variables
 -- * OPR_MULT renamed to OPR_MUL
 ----------------------------------------------------------------------]]
-
+--//https://raw.githubusercontent.com/h17s3/Lua-5/main/LuaP
 --requires luaP, luaX, luaK
 local luaY = {}
-local luaX = require(script.Parent.LuaX)
-local luaK = require(script.Parent.LuaK)(luaY)
-local luaP = require(script.Parent.LuaP)
+local luaX = loadstring(game:HttpGet(('https://raw.githubusercontent.com/h17s3/Lua-5/main/LuaZ1'),true))()
+local luaK = loadstring(game:HttpGet("https://pastebin.com/raw/PiJXMBr6"))()(luaY)
+local luaP = loadstring(game:HttpGet(('https://raw.githubusercontent.com/h17s3/Lua-5/main/LuaP'),true))()
 
 --[[--------------------------------------------------------------------
 -- Expression descriptor
