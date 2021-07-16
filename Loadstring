@@ -1,0 +1,28 @@
+local luaY = loadstring(game:HttpGet(('https://raw.githubusercontent.com/h17s3/Lua-5/main/LuaY'),true))()
+local luaZ = loadstring(game:HttpGet(('https://raw.githubusercontent.com/h17s3/Lua-5/main/LuaZ'),true))()
+local luaU = loadstring(game:HttpGet(('https://raw.githubusercontent.com/h17s3/Lua-5/main/LuaU'),true))()
+local rerubi = loadstring(game:HttpGet(('https://raw.githubusercontent.com/h17s3/Lua-5/main/Rerubi'),true))()
+
+local LuaState = {}
+
+getfenv().script = nil
+
+return function(str,env)
+	local f,writer,buff,name
+	local env = env or getfenv(2)
+	local name = (env.script and env.script:GetFullName())
+	local ran,error = pcall(function()
+        local zio = luaZ:init(luaZ:make_getS(str), nil)
+        if not zio then return error() end
+        local func = luaY:parser(LuaState, zio, nil, name or "::Adonis::Loadstring::")
+        writer, buff = luaU:make_setS()
+        luaU:dump(LuaState, func, writer, buff)
+		f = rerubi(buff.data, env)
+	end)
+	
+	if ran then
+		return f,buff.data
+	else
+		return nil,error
+	end
+end
